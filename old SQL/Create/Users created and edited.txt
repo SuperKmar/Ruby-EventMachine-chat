@@ -1,0 +1,26 @@
+CREATE table "USERS" (
+    "ID"         NUMBER(5,0) NOT NULL,
+    "RIGHTS"     NUMBER(5,0) NOT NULL,
+    "PASSWORD"   VARCHAR2(100),
+    constraint  "chat_users_pk" primary key ("ID")
+)
+/
+
+CREATE sequence "chat_users_pk-seq" 
+/
+
+CREATE trigger "BI_USERS"  
+  before insert on "USERS"              
+  for each row 
+begin  
+  if :NEW."ID" is null then
+    select "chat_users_pk-seq".nextval into :NEW."ID" from dual;
+  end if;
+end;
+/   
+
+ALTER TABLE "USERS" ADD CONSTRAINT "USERS_FK_RIGHTS" 
+FOREIGN KEY ("RIGHTS")
+REFERENCES "RIGHTS" ("ID")
+
+/

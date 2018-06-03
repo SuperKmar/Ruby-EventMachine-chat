@@ -1,0 +1,20 @@
+CREATE table "RIGHTS" (
+    "ID"         NUMBER(10,0) NOT NULL,
+    "NAME"       VARCHAR2(100) NOT NULL,
+    constraint  "chat_rights_pk-seq_constraint" primary key ("ID")
+)
+/
+
+CREATE sequence "chat_rights_pk-seq" 
+/
+
+CREATE trigger "BI_RIGHTS"  
+  before insert on "RIGHTS"              
+  for each row 
+begin  
+  if :NEW."ID" is null then
+    select "chat_rights_pk-seq".nextval into :NEW."ID" from dual;
+  end if;
+end;
+/   
+

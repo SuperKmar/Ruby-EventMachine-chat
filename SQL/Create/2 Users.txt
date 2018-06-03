@@ -1,0 +1,5 @@
+CREATE table "USERS" (
+    "ID"         SERIAL PRIMARY KEY,
+    "RIGHTS"     INTEGER NOT NULL REFERENCES "RIGHTS"("ID"),
+    "PASSWORD"   CHAR(100)  
+);

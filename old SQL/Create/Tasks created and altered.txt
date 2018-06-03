@@ -1,0 +1,37 @@
+CREATE table "TASKS" (
+    "ID"         NUMBER(5,0) NOT NULL,
+    "PARENT"    NUMBER(5,0),
+    "ROOM"   NUMBER(5,0) NOT NULL,
+    "NAME"   VARCHAR2(100),
+    "COMPLEATION"  NUMBER(3,0),
+    "ADDED_ON"   DATE NOT NULL,
+    "COMPLEATED_ON"   DATE,
+    constraint  "chat_tasks_pk" primary key ("ID")
+)
+/
+
+CREATE sequence "chat_tasks_pk-seq" 
+/
+
+CREATE trigger "BI_TASKS"  
+  before insert on "TASKS" 
+  for each row 
+begin  
+  if :NEW."ID" is null then
+    select "chat_tasks_pk-seq".nextval into :NEW."ID" from dual;
+  end if;
+end;
+/   
+
+ALTER TABLE "TASKS" ADD CONSTRAINT "CHAT_TASKS_FK_PARENT" 
+FOREIGN KEY ("PARENT")
+REFERENCES "TASKS" ("ID")
+ON DELETE SET NULL
+/
+
+ALTER TABLE "TASKS" ADD CONSTRAINT "CHAT_TASKS_FK_ROOM" 
+FOREIGN KEY ("ROOM")
+REFERENCES "ROOMS" ("ID")
+ON DELETE CASCADE
+/
+

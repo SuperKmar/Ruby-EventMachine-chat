@@ -1,0 +1,6 @@
+drop TABLE "USERNAMES"
+cascade constraints
+/   
+
+drop SEQUENCE "chat_usernames_pk-seq"
+/   

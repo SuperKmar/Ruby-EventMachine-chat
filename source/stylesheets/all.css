@@ -1,0 +1,155 @@
+@charset "utf-8";
+
+body {
+  background: #d4d4d4 url("../images/background.png");
+  text-align: left;
+  font-family: sans-serif; }
+
+ul {
+	text-align: left;
+}
+
+h1 {
+  color: rgba(0, 0, 0, .3);
+  font-weight: bold;
+  font-size: 32px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+  background: url("../images/middleman.png") no-repeat center 100px;
+  padding: 350px 0 10px;
+  margin: 15; }
+  
+#input_area {
+	text-align:center;
+	position:sticky;
+	bottom:0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;	
+}
+#topic_area{
+	float: top;
+	text-align:justified;
+	background-color: ghostwhite;
+	margin: auto;
+	width: 90%;
+}
+
+#chat_input {
+	width: 100%;
+}
+
+#wrapper {
+  margin-right: 200px;
+}
+
+#content {
+  float: left;
+  width: 100%;
+}
+
+#sidebar {
+  float: right;
+  position:fixed;
+  width: 200px;
+  background-color: #FFA;
+  right: 0;
+}
+
+
+
+.Container {
+    padding: 0;
+    margin: 0;
+}
+
+.Container li {
+    list-style-type: none;
+}
+
+
+
+/* indent for all tree children excepts root */
+.Node {
+    background-image : url(img/i.gif);
+    background-position : top left;
+    background-repeat : repeat-y;
+    margin-left: 18px;
+    zoom: 1;
+}
+
+.IsRoot {
+    margin-left: 0;
+}
+
+
+
+
+
+
+.doc {
+  font-size: 14px;
+  margin: 0; }
+/* left vertical line (grid) for all nodes */  .doc:before,
+.IsLast {  .doc:after {
+    background-image: url(img/i_half.gif);    opacity: .2;
+    background-repeat : no-repeat;    padding: 6px;
+}    font-style: normal;
+     position: relative;
+.ExpandOpen .Expand {    content: "•"; }
+    background-image: url(img/expand_minus.gif);  .doc a {
+}    color: rgba(0, 0, 0, 0.3); }
+     .doc a:hover {
+/* closed is higher priority than open */      color: #666; }
+.ExpandClosed .Expand {
+    background-image: url(img/expand_plus.gif);.welcome {
+}  -webkit-animation-name: welcome;
+   -webkit-animation-duration: .9s; }
+/* highest priority */
+.ExpandLeaf .Expand {@-webkit-keyframes welcome {
+    background-image: url(img/expand_leaf.gif);  from {
+}    -webkit-transform: scale(0);
+    opacity: 0;
+.Content {  }
+    min-height: 18px;  50% {
+    margin-left:18px;   -webkit-transform: scale(0);
+}   opacity: 0;
+  }
+* html  .Content {  82.5% {
+    height: 18px;     -webkit-transform: scale(1.03);
+}    -webkit-animation-timing-function: ease-out;
+    opacity: 1;
+.Expand {  }
+    width: 18px;  to {
+    height: 18px;    -webkit-transform: scale(1);
+    float: left;  }
+}}
+
+
+.ExpandLoading   {
+    width: 18px;
+    height: 18px;
+    float: left;
+    background-image: url(img/expand_loading.gif);
+}
+
+
+
+.ExpandOpen .Container {
+	display: block;
+}
+
+.ExpandClosed .Container {
+	display: none;
+}
+
+.ExpandOpen .Expand, .ExpandClosed .Expand {
+	cursor: pointer;
+}
+.ExpandLeaf .Expand {
+	cursor: auto;
+}
+
+
+	

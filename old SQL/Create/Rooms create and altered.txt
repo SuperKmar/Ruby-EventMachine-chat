@@ -1,0 +1,29 @@
+CREATE table "ROOMS" (
+    "ID"         NUMBER(5,0) NOT NULL,
+    "NAME"       VARCHAR2(100),
+    "PASSWORD"   VARCHAR2(100),
+    "TOPIC"      VARCHAR2(500),
+    "PARENT"     NUMBER(5,0),
+    constraint  "chat_rooms_pk" primary key ("ID")
+)
+/
+
+CREATE sequence "chat_rooms_pk-seq" 
+/
+
+CREATE trigger "BI_ROOMS"  
+  before insert on "ROOMS"              
+  for each row 
+begin  
+  if :NEW."ID" is null then
+    select "chat_rooms_pk-seq".nextval into :NEW."ID" from dual;
+  end if;
+end;
+/   
+
+
+ALTER TABLE "ROOMS" ADD CONSTRAINT "ROOMS_FK_PARENT" 
+FOREIGN KEY ("PARENT")
+REFERENCES "ROOMS" ("ID")
+
+/

@@ -1,0 +1,5 @@
+server commands:
+!help - show this text
+!login username password - login as this username (can be any of a user's previous names used)
+!register username password - create and login as a new user
+!name, !rename - change current user name (old one will still be tied to your account until it is deleted compleatly)

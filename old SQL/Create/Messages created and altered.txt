@@ -1,0 +1,35 @@
+CREATE table "MESSAGES" (
+    "ID"         NUMBER(5,0) NOT NULL,
+    "SENDER"    NUMBER(5,0) NOT NULL,
+    "ROOM"   NUMBER(5,0) NOT NULL,
+    "TEXT"   VARCHAR2(500),
+    "TIME"   DATE NOT NULL,
+    constraint  "chat_messages_pk" primary key ("ID")
+)
+/
+
+CREATE sequence "chat_messages_pk-seq" 
+/
+
+CREATE trigger "BI_MESSAGES"  
+  before insert on "MESSAGES"              
+  for each row 
+begin  
+  if :NEW."ID" is null then
+    select "chat_messages-seq".nextval into :NEW."ID" from dual;
+  end if;
+end;
+/   
+
+ALTER TABLE "MESSAGES" ADD CONSTRAINT "CHAT_MESSAGES_FK_SENDER" 
+FOREIGN KEY ("SENDER")
+REFERENCES "USERS" ("ID")
+ON DELETE CASCADE
+/
+
+ALTER TABLE "MESSAGES" ADD CONSTRAINT "CHAT_MESSAGES_FK_ROOM_ID" 
+FOREIGN KEY ("ROOM")
+REFERENCES "ROOMS" ("ID")
+ON DELETE CASCADE
+
+/

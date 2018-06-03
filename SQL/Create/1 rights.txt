@@ -1,0 +1,4 @@
+CREATE table "RIGHTS" (
+    "ID"         SERIAL PRIMARY KEY,
+    "NAME"       CHAR(100) NOT NULL  
+);

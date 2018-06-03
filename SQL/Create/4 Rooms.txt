@@ -1,0 +1,11 @@
+CREATE table "ROOMS" (
+    "ID"         SERIAL PRIMARY KEY,
+    "NAME"       CHAR(100),
+    "PASSWORD"   CHAR(100),
+    "TOPIC"      CHAR(500),
+    "PARENT"     INTEGER
+);
+
+ALTER TABLE "ROOMS" 
+	ADD	FOREIGN KEY ("PARENT")
+REFERENCES "ROOMS"("ID");

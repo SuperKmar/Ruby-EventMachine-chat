@@ -1,0 +1,23 @@
+CREATE TABLE "TESTLAB1" (
+"ID" NUMBER(5,0) NOT NULL,
+"LABNUM" NUMBER(2,0) NOT NULL,
+"SUBJECT" NUMBER(5,0) NOT NULL,
+constraint "TESTS_LAB1_pk" primary key ("ID")
+)
+/
+
+CREATE SEQUENCE "TESTS_TESTLAB1_PK-SEQ"
+/
+
+CREATE TRIGGER "BI_TESTLAB11"
+before insert on "TESTLAB1"
+  for each row
+  begin
+    if :NEW."ID" is null then
+      select "TESTS_TESTLAB1_PK-SEQ".nextval into :NEW."ID" from dual;
+    end if;
+  end;
+/
+
+
+

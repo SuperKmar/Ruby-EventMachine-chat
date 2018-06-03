@@ -1,0 +1,19 @@
+1) внешний IP
+2) открыть порты хоста (на роутере)
+3) главное НЕ отключить NAT
+4)установка виртуальной сетевой карты
+
+[11:03:09 PM] Vitaliy Moshkin: Нужен белый статичный ип
+[11:03:20 PM] Vitaliy Moshkin: Или просто белый
+ Thursday, April 14, 2016
+[3:06:20 AM] Vitaliy Moshkin: И если он не статичный не беда, есть dyndns
+
+
+	clear_rooms = ->
+		`element.parentNode.removeChild(element) for element in document.getElementsByClassName('room_list');`
+	
+	add_room = (json) ->
+		$('#room_list').append "<li>ololololo</li>"
+
+
+!newroom name:test name; parent:ROOT; topic:a very very nice topic
